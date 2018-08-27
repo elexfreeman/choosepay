@@ -10,7 +10,9 @@ import {FormFieldsService, Plan} from '../form-fields.service';
 })
 export class FirstTabComponent implements OnInit {
 
+    /*массив планов*/
     plans: Plan[] = [];
+    /*выбраный план*/
     selectedPlan: Plan;
 
     constructor(
@@ -20,6 +22,7 @@ export class FirstTabComponent implements OnInit {
     ) {
     }
 
+    /*событе кнопки далее*/
     next() {
         if (this.selectedPlan != null) {
             /*если все выбрано записываем план в глоб перемен*/
@@ -37,7 +40,7 @@ export class FirstTabComponent implements OnInit {
     ngOnInit() {
         /*проверка на предыдущий выбор*/
         this.selectedPlan = this.userData.selectedPlan;
-        /*планы*/
+        /*планы из json*/
         this.formFields.getPlans().subscribe(data => this.plans = data['plans']);
     }
 

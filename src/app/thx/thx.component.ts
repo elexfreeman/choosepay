@@ -1,3 +1,4 @@
+/*спосибо за покупку*/
 import { Component, OnInit } from '@angular/core';
 
 @Component({

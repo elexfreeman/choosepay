@@ -40,10 +40,11 @@ export class SecondTabComponent implements OnInit {
             /*если ничего не выбрано редиректив начало*/
             this.router.navigate(['']);
         } else {
-            /*планы*/
+            /*поля из файла json*/
             this.formFields.getInfo().subscribe(data => {
                 this.fields = data['fields'];
 
+                /*генерируем форму*/
                 this.fields.map((item, key) => {
 
                     /*значение поля*/

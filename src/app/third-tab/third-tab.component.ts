@@ -13,7 +13,7 @@ export class ThirdTabComponent implements OnInit {
 
     /*выбранный план*/
     selectedPlan: Plan;
-    /*заплненные поля*/
+    /*заполненные поля*/
     fields: any[];
 
     /*форма Reactive Forms*/
@@ -22,19 +22,16 @@ export class ThirdTabComponent implements OnInit {
 
         CVC: new FormControl('', Validators.compose([
             Validators.required,
-            /*убираем лишние слэши*/
             Validators.pattern('[0-9][0-9][0-9]')
         ])),
 
         month: new FormControl('', Validators.compose([
             Validators.required,
-            /*убираем лишние слэши*/
             Validators.pattern('[0-1][1-9]')
         ])),
 
         year: new FormControl('', Validators.compose([
             Validators.required,
-            /*убираем лишние слэши*/
             Validators.pattern('[2][0-1][0-9][0-9]')
         ]))
     });
@@ -47,7 +44,7 @@ export class ThirdTabComponent implements OnInit {
     }
 
     pay() {
-        console.log(this.payForm);
+       /*если форма валидна показываем стр спасибо*/
         if (this.payForm.status === 'VALID') {
             this.router.navigate(['thx']);
         }

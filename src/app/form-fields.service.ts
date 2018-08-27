@@ -10,12 +10,13 @@ export interface Plan {
     currency: string;
 }
 
-
+/*элемент для option*/
 export interface FieldItem {
     id: number;
     title: string;
 }
 
+/*поле ввода*/
 export interface Field {
     id: string;
     title: string;
@@ -33,10 +34,12 @@ export class FormFieldsService {
     constructor(private http: HttpClient) {
     }
 
+    /*данные по планах подписки из файла*/
     getPlans() {
         return this.http.get('assets/plans.json');
     }
 
+    /*данные о полях ввода из файла*/
     getInfo() {
         return this.http.get('assets/information.json');
     }
