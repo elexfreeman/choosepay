@@ -1,0 +1,54 @@
+<ul class="tab tab-block">
+    <li class="tab-item">
+        <a name="routing-strategies" href="#">Choise plan</a>
+    </li>
+    <li class="tab-item">
+        <a name="routing-strategies" href="#info">Information</a>
+    </li>
+    <li class="tab-item active">
+        <a>Billing</a>
+    </li>
+</ul>
+
+<div *ngIf="fields" class="container">
+
+    <div class="columns">
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12">
+            <h3 class="p-t-1">Your plan:</h3>
+            <h5 class="p-t-1">{{selectedPlan.title}}</h5>
+            <h5>{{selectedPlan.currency}}{{selectedPlan.price}}</h5>
+        </div>
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12">
+            <h3 class="p-t-1">Information:</h3>
+            <h5 class="p-t-1">{{fields['firstname']}} {{fields['lastname']}}, {{fields['email']}}</h5>
+            <h5>{{fields['phone']}}</h5>
+        </div>
+    </div>
+
+    <div class="columns p-t-1" [formGroup]="payForm">
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12 m-b-1">
+            <div class="form-group">
+                <input formControlName="cardNumber" class="form-input" type="text" placeholder="Card number">
+            </div>
+        </div>
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12 m-b-1">
+            <div class="form-group">
+                <input formControlName="CVC" max="3" class="form-input" type="text" placeholder="CVC / CVV">
+            </div>
+        </div>
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12 m-b-1">
+            <div class="form-group">
+                <input formControlName="month" max="2" class="form-input" type="text" placeholder="Month (MM)">
+            </div>
+        </div>
+        <div class="column col-6 col-xs-12 col-sm-12 col-md-12 m-b-1">
+            <div class="form-group">
+                <input formControlName="year" max="4" class="form-input" type="text" placeholder="Year (YYYY)">
+            </div>
+        </div>
+    </div>
+    <div class="p-t-1 text-right">
+        <button (click)="pay()" [disabled]="this.payForm.status === 'INVALID'" class="btn btn-primary w-7rem">By
+        </button>
+    </div>
+</div>

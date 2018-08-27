@@ -1,0 +1,46 @@
+<ul class="tab tab-block">
+    <li class="tab-item">
+        <a name="routing-strategies" href="#">Choise plan</a>
+    </li>
+    <li class="tab-item active">
+        <a>Information</a>
+    </li>
+    <li class="tab-item">
+        <a>Billing</a>
+    </li>
+</ul>
+
+<div class="container">
+    <h3 class="p-t-1">Let's finish powering you up!</h3>
+
+    <div class="columns" [formGroup]="userForm">
+        <div *ngFor="let f of fields"
+             [ngClass]="{'col-12': f.type == 'select', 'col-6': f.type != 'select'}"
+             class="column  col-xs-12 col-sm-12 col-md-12 p-t-1">
+            <div *ngIf="f.type=='text'" class="form-group">
+                <input formControlName="{{f.id}}" class="form-input" type="text"
+                       placeholder="{{f.title}}">
+            </div>
+            <div *ngIf="f.type=='email'" class="form-group">
+                <input formControlName="{{f.id}}" class="form-input" type="email"
+                       placeholder="{{f.title}}">
+            </div>
+            <div *ngIf="f.type=='phone'" class="form-group">
+                <input formControlName="{{f.id}}" class="form-input" type="phone"
+                       placeholder="{{f.title}}">
+            </div>
+            <div *ngIf="f.type=='select'" class="form-group">
+                <select formControlName="{{f.id}}" class="form-select">
+                    <option selected value="">{{f.title}}</option>
+                    <option *ngFor="let opt of f.items" [value]="opt.id">{{opt.title}}</option>
+                </select>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="p-t-1 text-right">
+        <button  [disabled]="this.userForm.status === 'INVALID'" (click)="next()" class="btn btn-primary w-7rem">Continue</button>
+    </div>
+
+</div>
